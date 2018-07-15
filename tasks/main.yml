@@ -1,0 +1,5 @@
+---
+# tasks file for mgmt-wkst
+
+- include_tasks: apt.yml
+

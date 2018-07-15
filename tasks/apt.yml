@@ -1,0 +1,81 @@
+---
+# tasks file for mgmt-wkst package installation
+
+- name: Update apt repositories cache
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Install openssh-server apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - openssh-server
+
+- name: Install ansible module support apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libxml2-dev
+    - libxslt-dev
+    - python-dev
+    - python-lxml
+    - libvirt-dev
+    - python-libvirt
+    - python-netaddr
+
+- name: Install server management apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ipmitool
+
+- name: Install source management apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+
+- name: Install bind management tools apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - haveged
+    - bind9utils
+
+- name: Install vagrant apt package
+  become: true
+  apt:
+    deb: "https://releases.hashicorp.com/vagrant/{{vagrant_version}}/vagrant_{{vagrant_version}}_x86_64.deb"
+    state: present
+
+- name: Install vagrant plugin support apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gcc
+    - make
+    - libvirt-dev
+
+- name: Install vagrant base-box building support apt packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - qemu
+    - jq
+    - xmlstarlet
+
