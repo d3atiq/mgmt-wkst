@@ -28,6 +28,19 @@
     - python-libvirt
     - python-netaddr
 
+- name: Add ansible repository
+  become: true
+  apt_repository:
+    repo: ppa:ansible/ansible
+
+- name: Install ansible apt package
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ansible
+
 - name: Install server management apt packages
   become: true
   apt:
