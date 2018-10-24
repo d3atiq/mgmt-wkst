@@ -9,24 +9,14 @@
 - name: Install openssh-server apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: openssh-server
     state: present
-  with_items:
-    - openssh-server
 
 - name: Install ansible module support apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: [ libxml2-dev, libxslt-dev, python-dev, python-lxml, libvirt-dev, python-libvirt, python-netaddr ]
     state: present
-  with_items:
-    - libxml2-dev
-    - libxslt-dev
-    - python-dev
-    - python-lxml
-    - libvirt-dev
-    - python-libvirt
-    - python-netaddr
 
 - name: Add ansible repository
   become: true
@@ -36,35 +26,26 @@
 - name: Install ansible apt package
   become: true
   apt:
-    name: "{{ item }}"
+    name: ansible
     state: present
-  with_items:
-    - ansible
 
 - name: Install server management apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: ipmitool
     state: present
-  with_items:
-    - ipmitool
 
 - name: Install source management apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: git
     state: present
-  with_items:
-    - git
 
 - name: Install bind management tools apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: [ haveged, bind9utils ]
     state: present
-  with_items:
-    - haveged
-    - bind9utils
 
 - name: Install vagrant apt package
   become: true
@@ -75,20 +56,11 @@
 - name: Install vagrant plugin support apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: [ gcc, make, libvirt-dev ]
     state: present
-  with_items:
-    - gcc
-    - make
-    - libvirt-dev
 
 - name: Install vagrant base-box building support apt packages
   become: true
   apt:
-    name: "{{ item }}"
+    name: [ qemu, jq, xmlstarlet]
     state: present
-  with_items:
-    - qemu
-    - jq
-    - xmlstarlet
-
